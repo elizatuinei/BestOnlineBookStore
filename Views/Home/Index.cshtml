@@ -4,21 +4,42 @@
 
 @model BestOnlineBookStore.Models.ViewModels.BookViewModel
 
-     <h1>The Online Bookstore!</h1>
-@foreach (Book b in Model.Books)
-{
-    <h3>@b.BookId</h3>
-    <ul>
-        <li>Book Title: @b.Title</li>
-        <li>Author: @b.Author</li>
-        <li>Publisher: @b.Publisher</li>
-        <li>ISBN: @b.Author</li>
-        <li>Classification: @b.Classification</li>
-        <li>Number of Pages: @b.PageCount</li>
-        <li>Price: @b.Price</li>
-    </ul>
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>@ViewData["Title"]</title>
+    <style>
+        .bg-custom {
+            background-color: #a0d2eb;
+        }
+    </style>
+</head>
+<body>
 
-<div page-model="@Model.PaginationInfo" page-action="Index"></div>
+<div class="container-fluid">
+    <div class="row">
+            <!-- Left-justified content -->
+            <div>
+                <h1>The Online Bookstore!</h1>
+                @foreach (Book b in Model.Books)
+                {
+                    <partial name="myFirstPartialView" model="b"/>
+                }
+        </div>
+        </div>
+    </div>
+    <div page-model="@Model.PaginationInfo" page-action="Index" page-classes-enabled="true" 
+    page-class="btn" page-class-normal="btn-outline-dark" page-page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
 
 
